@@ -19,3 +19,11 @@ app.use(express.static('website'));
 
 
 // Setup Server
+const port = 3000;
+
+const server = app.listen(port, runMyServer);
+
+function runMyServer(){
+    console.log(server);
+    console.log(`running server at port ${port}`)
+}
