@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Mohamed-ElHadidy/fwd-weather-journal-app/issues"
   },
-  "homepage": "https://github.com/Mohamed-ElHadidy/fwd-weather-journal-app#readme"
+  "homepage": "https://github.com/Mohamed-ElHadidy/fwd-weather-journal-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
