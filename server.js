@@ -1,5 +1,6 @@
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
+const posts = [];
 
 // Require Express to run server and routes
 const express = require('express');
@@ -31,3 +32,10 @@ function runMyServer() {
     //console.log(server);
     console.log(`running server at port ${port}`)
 }
+
+
+app.post('/addPost' , (req, res) => {
+    console.log(req.body);
+    posts.push(req.body);
+    console.log(posts);
+});
