@@ -1,11 +1,6 @@
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
-// openweathermap
-// full url -> api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
-const API_key = 'c63dac31932c09755c4bd095c7c7b524';
-const API_base = 'https://api.openweathermap.org/data/2.5/weather?'
-
 const posts = [];
 
 // Require Express to run server and routes
