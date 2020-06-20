@@ -10,6 +10,10 @@ const zipCode = document.getElementById('zip');
 const feelings = document.getElementById('feelings');
 const country = document.getElementById('country');
 const generate = document.getElementById('generate');
+const dateEntry = document.getElementById('date');
+const tempEntry = document.getElementById('temp');
+const contentEntry = document.getElementById('content');
+
 const userData = {};
 let errors = '';
 
@@ -106,7 +110,7 @@ const getWeatherData = async (url = '', data = {}) => {
 
             console.log(userData);
             // post data to server
-            postData('/projectData', userData);
+            postData('/projectData', userData).then(updateUI('/projectData'))
 
             return newData;
 
@@ -114,6 +118,21 @@ const getWeatherData = async (url = '', data = {}) => {
             console.log("error", error);
         }
     }
+}
+
+const updateUI = async(url = '', data = {}) => {
+    const response = await fetch(url);
+    try {
+        const newData = await response.json();
+        dateEntry.innerHTML = newData.date;
+        tempEntry.innerHTML =  newData.temperature;
+        contentEntry.innerHTML = `<p>country ${newData.country}.</p> <p>feelings: ${newData.feelings}</p> <p>zipCode: ${newData.zipCode}</p>`
+        console.log('UI', newData);
+
+    } catch (error) {
+        console.log("error", error);
+    }
+
 }
 
 // inputs click event
