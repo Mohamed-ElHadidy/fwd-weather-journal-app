@@ -89,7 +89,7 @@ const getWeatherData = async (url = '', data = {}) => {
     if (errors == '') {
         
         // const Full_URL = `${API_base}zip=${zipCode.value},${(country.value).toLowerCase()}&appid=${API_key}`;
-       const zip_code = 'zip=${zipCode.value},';
+       const zip_code = `zip=${zipCode.value},`;
        const country_code = `${(country.value).toLowerCase()}`;
         const response = await fetch(API_base+zip_code+country_code+API_key);
 
