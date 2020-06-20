@@ -162,3 +162,10 @@ button.modal_close {
     font-size: 60px;
     margin-bottom: 30px;
 }
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #d02e4b;
+    color: white;
+}
