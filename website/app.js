@@ -14,6 +14,11 @@ const dateEntry = document.getElementById('date');
 const tempEntry = document.getElementById('temp');
 const contentEntry = document.getElementById('content');
 
+//modal
+const modalContainer = document.querySelector('.modal_container');
+const modal = document.querySelector('.modal p');
+const modal_close = document.querySelector('.modal_close');
+
 const userData = {};
 let errors = '';
 
@@ -42,6 +47,7 @@ const postData = async (url = '', data = {}) => {
         return newData;
     } catch (error) {
         console.log("error", error);
+        generateModal('Something went wrong please try again later.')
     }
 }
 
@@ -62,21 +68,27 @@ const checkInvalidity = () => {
 
     if (invalid_feeling && ivalid_countryCode && (invalid_zipCode)) {
         errors = 'Please add a valid zip/postal code number, two letters country code and describe your feeling';
+        generateModal(errors);
         console.log(errors)
     } else if ((invalid_zipCode) && ivalid_countryCode) {
         errors = 'Please enter a valid zip/postal code number andtwo letters country code';
+        generateModal(errors);
         console.log(errors)
     } else if (invalid_feeling && ivalid_countryCode) {
         errors = 'Please describe your feeling and add two letters country code';
+        generateModal(errors);
         console.log(errors)
     } else if ((invalid_zipCode)) {
         errors = 'Please enter a valid zip/postal code number';
+        generateModal(errors);
         console.log(errors)
     } else if (ivalid_countryCode) {
         errors = 'Please enter a valid two letters country code';
+        generateModal(errors);
         console.log(errors)
     } else if (invalid_feeling) {
         errors = 'Please describe your feeling';
+        generateModal(errors);
         console.log(errors)
     } else {
         errors = '';
@@ -116,6 +128,7 @@ const getWeatherData = async (url = '', data = {}) => {
 
         } catch (error) {
             console.log("error", error);
+            generateModal('Something went wrong please try again later.')
         }
     }
 }
@@ -131,9 +144,19 @@ const updateUI = async(url = '', data = {}) => {
 
     } catch (error) {
         console.log("error", error);
+        generateModal('Something went wrong please try again later.')
     }
 
 }
 
 // inputs click event
 generate.addEventListener('click', getWeatherData)
+
+const generateModal = (errormsg) => {
+    modal.innerHTML = errormsg;
+    modalContainer.style.display = 'block';
+}
+
+modal_close.addEventListener('click', (e) => {
+    modalContainer.style.display = 'none';
+})
