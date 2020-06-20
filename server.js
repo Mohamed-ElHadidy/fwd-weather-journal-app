@@ -34,9 +34,14 @@ function runMyServer() {
     console.log(`running server at port ${port}`)
 }
 
+app.get('/projectData' , (req, res) => {
+    res.send(projectData)
+    console.log(projectData);
+});
 
-app.post('/addPost' , (req, res) => {
+app.post('/projectData' , (req, res) => {
     console.log(req.body);
+    projectData = req.body;
     posts.push(req.body);
     console.log(posts);
 });

@@ -100,12 +100,12 @@ const getWeatherData = async (url = '', data = {}) => {
             userData.zipCode = zipCode.value;
             userData.country = country.value;
             userData.feelings = feelings.value;
-            userData.temperature = `${newData.main.temp - 273.15} °C`;
+            userData.temperature = `${(newData.main.temp - 273.15).toFixed(1)} °C`;
             userData.date = newDate;
 
             console.log(userData);
             // post data to server
-            postData('/addPost', userData);
+            postData('/projectData', userData);
 
             return newData;
 
