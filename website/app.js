@@ -1,7 +1,7 @@
 /* openweathermap */
 
 // full url -> api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
-const API_key = 'c63dac31932c09755c4bd095c7c7b524';
+const API_key = '&appid=c63dac31932c09755c4bd095c7c7b524';
 const API_base = 'https://api.openweathermap.org/data/2.5/weather?'
 
 
@@ -88,9 +88,10 @@ const getWeatherData = async (url = '', data = {}) => {
     // if all inputs data are valid > fetching temprature data
     if (errors == '') {
         
-        const Full_URL = `${API_base}zip=${zipCode.value},${(country.value).toLowerCase()}&appid=${API_key}`;
-       
-        const response = await fetch(Full_URL);
+        // const Full_URL = `${API_base}zip=${zipCode.value},${(country.value).toLowerCase()}&appid=${API_key}`;
+       const zip_code = 'zip=${zipCode.value},';
+       const country_code = `${(country.value).toLowerCase()}`;
+        const response = await fetch(API_base+zip_code+country_code+API_key);
 
         try {
             const newData = await response.json();
